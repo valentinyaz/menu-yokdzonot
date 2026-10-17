@@ -45,6 +45,7 @@ window.MENU = {
             },
             {
               nombre: { es: "Salsa Zikilpac", en: "Zikilpac dip" },
+              foto: "fotos/salsa-zikilpac.jpg",
               precio: 140,
               etiqueta: { es: "Receta regional", en: "Regional recipe" },
               desc: {
