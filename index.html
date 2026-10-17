@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Menú · Cenote Yokdzonot</title>
 <meta name="description" content="Menú del restaurante del Cenote Yokdzonot, Yucatán. Cocina yucateca: poc chuc, panuchos, salbutes, sopa de lima y más.">
-<meta name="theme-color" content="#0b3d4a">
+<meta name="theme-color" content="#14211e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f5a4a'/%3E%3Cpath d='M3 27V23H7V19H11V15H14V11H18V15H21V19H25V23H29V27Z' fill='%23d9a441'/%3E%3Crect x='14.5' y='5' width='3' height='4' fill='%23d9a441'/%3E%3C/svg%3E">
 <link rel="preload" href="fuentes/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fuentes/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -13,29 +14,34 @@
   @font-face { font-family: "Fraunces"; font-weight: 100 900; font-display: swap; src: url(fuentes/fraunces-latin.woff2) format("woff2"); }
   @font-face { font-family: "Outfit"; font-weight: 100 900; font-display: swap; src: url(fuentes/outfit-latin.woff2) format("woff2"); }
 
+  /* Paleta maya: piedra caliza, jade, azul maya, oro y achiote */
   :root {
-    --agua-profunda: #0b3d4a;
-    --agua: #127f8f;
-    --turquesa: #3fd0c9;
-    --turquesa-claro: #a8efe6;
-    --caliza: #f5eedf;
-    --caliza-2: #ebe0c9;
-    --piedra: #cdb994;
-    --roca: #1b2622;
-    --selva: #2f5d3a;
-    --selva-claro: #4f8a55;
-    --terracota: #c4623a;
-    --sol: #f2c14e;
-    --tinta: #1f2a28;
-    --tinta-suave: #5d6b66;
-    --radio: 18px;
+    --obsidiana: #14211e;
+    --jade: #0f5a4a;
+    --azul-maya: #2595b3;
+    --azul-claro: #9fe0e6;
+    --oro: #d9a441;
+    --oro-claro: #f1d08a;
+    --achiote: #b8432a;
+    --caliza: #ece2cc;
+    --caliza-clara: #f8f2e5;
+    --piedra: #c9b48c;
+    --tinta: #1f2523;
+    --tinta-suave: #5e625a;
+    /* fila de pirámides escalonadas */
+    --piramides: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='14'%3E%3Cpath d='M0 14V12H4V9H8V6H12V3H15V0H21V3H24V6H28V9H32V12H36V14Z' fill='%2314211e'/%3E%3Crect x='16.5' y='3' width='3' height='3' fill='%23d9a441'/%3E%3C/svg%3E");
+    --piramides-jade: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='14'%3E%3Cpath d='M0 14V12H4V9H8V6H12V3H15V0H21V3H24V6H28V9H32V12H36V14Z' fill='%230f5a4a'/%3E%3Crect x='16.5' y='3' width='3' height='3' fill='%23d9a441'/%3E%3C/svg%3E");
+    /* greca escalonada para separadores */
+    --greca: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='12'%3E%3Cpath d='M0 12V8H4V4H8V0H12V4H16V8H20V12' fill='none' stroke='%23d9a441' stroke-width='1.6'/%3E%3Cpath d='M16 0V4H20V8H24V12H28V8H32V4' fill='none' stroke='%232595b3' stroke-width='1.6'/%3E%3C/svg%3E");
+    /* textura de piedra caliza */
+    --textura: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .22 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    background: var(--caliza);
+    background: var(--caliza) var(--textura);
     color: var(--tinta);
     font: 16px/1.5 "Outfit", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -46,162 +52,187 @@
   .portada { position: relative; background: linear-gradient(120deg, #2f6f9a, #2a8c6f 55%, #6c9a3c); }
   .portada img {
     display: block; width: 100%; height: auto; aspect-ratio: 900 / 506;
-    max-height: 46vh; object-fit: cover; object-position: 50% 40%;
+    max-height: 44vh; object-fit: cover; object-position: 50% 40%;
   }
   @media (min-width: 700px) { .portada img { aspect-ratio: 1800 / 391; max-height: 340px; } }
 
-  .titulo {
-    background: var(--agua-profunda); color: #fff; text-align: center;
-    padding: 14px 20px 16px;
-  }
+  .escalones { height: 14px; margin-top: -14px; position: relative; background: var(--piramides) repeat-x left bottom; }
+
+  .titulo { background: var(--obsidiana); color: #fff; text-align: center; padding: 12px 20px 20px; }
   .titulo .lugar {
-    display: block; font-size: 11.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--turquesa-claro);
+    display: block; font-size: 11px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: var(--azul-claro);
   }
-  .titulo h1 { font-size: 34px; font-weight: 900; line-height: 1.1; margin-top: 2px; color: var(--sol); letter-spacing: .02em; }
-  .titulo p { margin: 2px auto 0; max-width: 34ch; color: #d9f4f0; font-size: 15px; }
+  .titulo h1 {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    font-size: 40px; font-weight: 800; line-height: 1.05; margin-top: 4px; color: var(--oro-claro); letter-spacing: .04em;
+  }
+  .titulo h1::before, .titulo h1::after {
+    content: ""; width: 34px; height: 12px; flex: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='12'%3E%3Cpath d='M0 6H10M24 6H34' stroke='%23d9a441' stroke-width='1.5'/%3E%3Cpath d='M17 0L23 6L17 12L11 6Z' fill='%23d9a441'/%3E%3Cpath d='M17 3.5L19.5 6L17 8.5L14.5 6Z' fill='%2314211e'/%3E%3C/svg%3E") no-repeat center;
+  }
+  .titulo p { margin: 4px auto 0; max-width: 34ch; color: #cfd9d3; font-size: 14.5px; }
+  .titulo .significado { display: block; margin-top: 10px; font-size: 12px; color: var(--oro); letter-spacing: .04em; }
+  .titulo .significado i { font-family: "Fraunces", Georgia, serif; color: var(--oro-claro); }
 
   .idioma {
-    position: absolute; top: max(14px, env(safe-area-inset-top)); right: 14px; z-index: 5;
-    display: flex; background: rgba(11,61,74,.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 3px;
+    position: absolute; top: max(12px, env(safe-area-inset-top)); right: 12px; z-index: 5;
+    display: flex; background: rgba(20,33,30,.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(241,208,138,.35); border-radius: 999px; padding: 3px;
   }
   .idioma button {
     border: 0; background: transparent; color: #fff; font: 600 13px "Outfit", sans-serif;
     padding: 7px 13px; border-radius: 999px; cursor: pointer; letter-spacing: .05em;
   }
-  .idioma button[aria-pressed="true"] { background: var(--turquesa); color: var(--agua-profunda); }
-
-  /* ---------- greca maya ---------- */
-  .greca {
-    height: 20px;
-    background: var(--agua-profunda) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Cpath d='M0 10L10 0L20 10L10 20ZM20 10L30 0L40 10L30 20Z' fill='none' stroke='%233fd0c9' stroke-width='1.4'/%3E%3Cpath d='M10 5L15 10L10 15L5 10ZM30 5L35 10L30 15L25 10Z' fill='%23f2c14e'/%3E%3C/svg%3E") repeat-x center;
-  }
-  .greca.clara {
-    background: var(--caliza-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20'%3E%3Cpath d='M0 10L10 0L20 10L10 20ZM20 10L30 0L40 10L30 20Z' fill='none' stroke='%23c4623a' stroke-width='1.4'/%3E%3Cpath d='M10 5L15 10L10 15L5 10ZM30 5L35 10L30 15L25 10Z' fill='%23127f8f'/%3E%3C/svg%3E") repeat-x center;
-    opacity: .8;
-  }
+  .idioma button[aria-pressed="true"] { background: var(--oro); color: var(--obsidiana); }
 
   /* ---------- navegación ---------- */
   nav.tabs {
     position: sticky; top: 0; z-index: 10;
-    background: rgba(245,238,223,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--caliza-2);
+    background: var(--jade); box-shadow: 0 6px 16px -10px rgba(0,0,0,.5);
+    border-top: 1px solid rgba(241,208,138,.25);
   }
   nav.tabs ul {
-    list-style: none; margin: 0 auto; padding: 10px 12px; max-width: 680px;
-    display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+    list-style: none; margin: 0 auto; padding: 9px 12px; max-width: 720px;
+    display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
   }
   nav.tabs ul::-webkit-scrollbar { display: none; }
   nav.tabs a {
     display: block; white-space: nowrap; text-decoration: none;
-    font-weight: 600; font-size: 14px; color: var(--agua-profunda);
-    padding: 8px 14px; border-radius: 999px; transition: background .2s, color .2s;
+    font-weight: 600; font-size: 14px; color: #d8ebe2; letter-spacing: .02em;
+    padding: 8px 14px; border-radius: 10px; transition: background .2s, color .2s;
   }
-  nav.tabs a.activo { background: var(--agua-profunda); color: var(--caliza); }
+  nav.tabs a.activo { background: var(--oro); color: var(--obsidiana); }
 
   /* ---------- menú ---------- */
-  main { max-width: 680px; margin: 0 auto; padding: 8px 16px 40px; }
-  section.seccion { padding-top: 34px; scroll-margin-top: 60px; }
-  .seccion-cab { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
-  .seccion-cab .gota {
-    flex: none; width: 38px; height: 38px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
-    background: linear-gradient(135deg, var(--turquesa), var(--agua));
-    box-shadow: inset -4px -4px 0 rgba(0,0,0,.08);
+  main { max-width: 720px; margin: 0 auto; padding: 4px 14px 48px; }
+  section.seccion { padding-top: 36px; scroll-margin-top: 58px; }
+
+  .seccion-cab { display: flex; align-items: center; gap: 14px; }
+  /* cartucho de piedra con el numeral maya de la sección */
+  .glifo {
+    flex: none; width: 54px; height: 54px; border-radius: 12px;
+    display: grid; place-items: center;
+    background: var(--jade); color: var(--oro-claro);
+    box-shadow: inset 0 0 0 3px var(--jade), inset 0 0 0 4.5px var(--oro), 0 6px 14px -8px rgba(15,90,74,.8);
   }
-  .seccion:nth-child(2) .gota { background: linear-gradient(135deg, var(--sol), var(--terracota)); }
-  .seccion:nth-child(3) .gota { background: linear-gradient(135deg, var(--selva-claro), var(--selva)); }
-  .seccion:nth-child(4) .gota { background: linear-gradient(135deg, var(--terracota), #8e3a22); }
-  .seccion h2 { font-size: 34px; font-weight: 900; color: var(--agua-profunda); letter-spacing: -.01em; }
+  .glifo svg { width: 34px; height: 34px; }
+  .seccion:nth-child(2) .glifo { background: var(--achiote); box-shadow: inset 0 0 0 3px var(--achiote), inset 0 0 0 4.5px var(--oro-claro), 0 6px 14px -8px rgba(184,67,42,.8); }
+  .seccion:nth-child(3) .glifo { background: var(--obsidiana); box-shadow: inset 0 0 0 3px var(--obsidiana), inset 0 0 0 4.5px var(--oro), 0 6px 14px -8px rgba(20,33,30,.8); }
+  .seccion:nth-child(4) .glifo { background: var(--azul-maya); color: #fff; box-shadow: inset 0 0 0 3px var(--azul-maya), inset 0 0 0 4.5px #fff, 0 6px 14px -8px rgba(37,149,179,.8); }
+  .seccion-cab .kicker {
+    display: block; font-size: 11px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; color: var(--achiote);
+  }
+  .seccion h2 { font-size: 32px; font-weight: 800; color: var(--obsidiana); line-height: 1.05; }
   .seccion .nota {
-    display: inline-block; margin: 2px 0 8px 50px; font-size: 13px; font-weight: 600;
-    color: var(--terracota); letter-spacing: .08em; text-transform: uppercase;
+    display: inline-block; margin: 12px 0 0; font-size: 12.5px; font-weight: 600;
+    color: var(--jade); background: rgba(15,90,74,.09); border: 1px solid rgba(15,90,74,.2);
+    padding: 4px 11px; border-radius: 8px; letter-spacing: .06em; text-transform: uppercase;
   }
+  .separador { height: 12px; margin: 16px 0 4px; background: var(--greca) repeat-x left center; opacity: .75; }
 
-  .grupo { margin-top: 18px; }
+  .grupo { margin-top: 10px; }
   .grupo h3 {
-    font-size: 19px; font-weight: 700; color: var(--terracota);
-    display: flex; align-items: baseline; gap: 10px; margin: 22px 0 4px;
+    font-size: 19px; font-weight: 700; color: var(--jade);
+    display: flex; align-items: center; gap: 12px; margin: 24px 2px 10px;
   }
-  .grupo h3::after { content: ""; flex: 1; height: 1px; background: var(--piedra); opacity: .7; }
-  .cols {
-    display: flex; justify-content: flex-end; gap: 0; font-size: 11px; font-weight: 600;
-    letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-suave); padding-right: 2px;
+  .grupo h3::before {
+    content: ""; width: 10px; height: 10px; flex: none; transform: rotate(45deg);
+    background: var(--oro); box-shadow: 0 0 0 2px var(--caliza), 0 0 0 3.5px var(--oro);
   }
-  .cols span { width: 64px; text-align: right; }
+  .grupo h3::after { content: ""; flex: 1; height: 1px; background: var(--piedra); }
 
+  /* platillos: tarjetas de piedra */
   .item {
-    display: grid; grid-template-columns: 1fr auto; gap: 2px 14px;
-    padding: 14px 0; border-bottom: 1px dashed var(--piedra);
+    display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; align-items: start;
+    background: var(--caliza-clara);
+    border: 1px solid rgba(140,110,60,.22); border-radius: 16px;
+    padding: 12px; margin-top: 10px;
+    box-shadow: 0 1px 0 #fffaf0 inset, 0 8px 18px -14px rgba(60,40,10,.55);
   }
-  .item:last-child { border-bottom: 0; }
-  .item.con-foto { grid-template-columns: 96px 1fr auto; }
-  .item .foto {
-    grid-row: span 3; width: 96px; height: 96px; border-radius: 16px; object-fit: cover;
-    background: var(--caliza-2); cursor: zoom-in;
-    box-shadow: 0 6px 16px -8px rgba(11,61,74,.45);
+  .item.con-foto { grid-template-columns: 104px 1fr auto; }
+  .item .foto, .sin-foto { grid-row: span 3; width: 104px; height: 104px; border-radius: 12px; }
+  .item .foto { object-fit: cover; background: var(--caliza); cursor: zoom-in; }
+  .item .nombre { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 18.5px; line-height: 1.2; color: var(--obsidiana); padding-top: 2px; }
+  .item .precio {
+    font: 700 18px "Outfit", sans-serif; color: var(--jade); white-space: nowrap; text-align: right;
+    font-variant-numeric: tabular-nums; padding-top: 2px;
   }
+  .item .precio small { font-size: .72em; font-weight: 600; margin-right: 1px; opacity: .8; }
+  .item .desc { grid-column: 1 / -1; font-size: 14px; color: var(--tinta-suave); line-height: 1.45; }
+  .item.con-foto .desc, .item.con-foto .tag { grid-column: 2 / -1; }
+  .tag {
+    grid-column: 1 / -1; justify-self: start; margin: 1px 0 2px;
+    font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: #fff; background: var(--achiote); padding: 3px 9px 2px; border-radius: 6px;
+  }
+  .item.agotado .nombre, .item.agotado .precio { text-decoration: line-through; opacity: .5; }
+  .item.agotado .tag { background: var(--tinta-suave); }
 
   .sin-foto {
-    grid-row: span 3; width: 96px; height: 96px; border-radius: 16px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-    background: linear-gradient(160deg, #e6f6f3, var(--caliza-2));
-    border: 1.5px dashed var(--piedra); color: var(--agua);
-    font-size: 10.5px; font-weight: 600; line-height: 1.15; text-align: center;
-    letter-spacing: .04em; text-transform: uppercase; padding: 6px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    background: var(--caliza) var(--textura);
+    border: 1.5px dashed var(--piedra); color: var(--jade);
+    font-size: 10px; font-weight: 700; line-height: 1.15; text-align: center;
+    letter-spacing: .08em; text-transform: uppercase; padding: 6px;
   }
-  .sin-foto svg { width: 34px; height: 34px; opacity: .75; }
+  .sin-foto svg { width: 40px; height: 24px; }
+
+  /* bebidas: una tarjeta por grupo, en forma de lista */
+  .lista {
+    background: var(--caliza-clara); border: 1px solid rgba(140,110,60,.22); border-radius: 16px;
+    padding: 4px 14px; box-shadow: 0 1px 0 #fffaf0 inset, 0 8px 18px -14px rgba(60,40,10,.55);
+  }
+  .lista .item { background: none; border: 0; border-bottom: 1px dashed var(--piedra); border-radius: 0; box-shadow: none; margin: 0; padding: 11px 0; }
+  .lista .item:last-child { border-bottom: 0; }
+  .lista .item .nombre { font-size: 17px; }
+  .lista .item .precio { font-size: 16.5px; }
+  .cols {
+    display: flex; justify-content: flex-end; font-size: 10.5px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--achiote); padding: 10px 0 0;
+  }
+  .cols span, .item .precios span { width: 64px; text-align: right; }
+  .item .precios { display: flex; }
 
   /* ---------- foto ampliada ---------- */
   .visor {
     position: fixed; inset: 0; z-index: 50; display: none;
     align-items: center; justify-content: center; flex-direction: column; gap: 14px;
-    padding: 20px; background: rgba(11,61,74,.92); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    cursor: zoom-out;
+    padding: 20px; background: rgba(20,33,30,.94); cursor: zoom-out;
   }
   .visor.abierto { display: flex; animation: aparecer .2s ease-out; }
-  .visor img { max-width: 100%; max-height: 78vh; border-radius: 18px; box-shadow: 0 20px 50px rgba(0,0,0,.4); }
-  .visor p { margin: 0; color: #fff; font: 700 22px "Fraunces", Georgia, serif; text-align: center; }
-  .visor img { width: min(100%, 78vh); object-fit: contain; transition: filter .3s; }
+  .visor img {
+    width: min(100%, 78vh); max-height: 74vh; object-fit: contain; border-radius: 16px;
+    border: 3px solid var(--oro); box-shadow: 0 20px 50px rgba(0,0,0,.5); transition: filter .3s;
+  }
   .visor.cargando img { filter: blur(6px) saturate(1.1); }
-  .visor small { color: var(--turquesa-claro); font-size: 13px; min-height: 1em; }
+  .visor p { margin: 0; color: var(--oro-claro); font: 700 23px "Fraunces", Georgia, serif; text-align: center; }
+  .visor small { color: var(--azul-claro); font-size: 13px; min-height: 1em; }
   @keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
-  .item .nombre { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 18px; line-height: 1.25; color: var(--tinta); }
-  .item .precio {
-    font-weight: 600; font-size: 17px; color: var(--agua); white-space: nowrap; text-align: right;
-    font-variant-numeric: tabular-nums;
-  }
-  .item .precios { display: flex; }
-  .item .precios span { width: 64px; }
-  .item .desc { grid-column: 1 / -1; font-size: 14.5px; color: var(--tinta-suave); line-height: 1.45; }
-  .item.con-foto .desc, .item.con-foto .tag { grid-column: 2 / -1; }
-  .tag {
-    grid-column: 1 / -1; justify-self: start; margin-top: 2px;
-    font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
-    color: var(--selva); background: #dcebd5; padding: 3px 9px; border-radius: 999px;
-  }
-  .item.agotado .nombre, .item.agotado .precio { text-decoration: line-through; opacity: .5; }
-  .item.agotado .tag { background: #f3d6c9; color: var(--terracota); }
-
-  /* tarjeta destacada para platillos con foto grande */
-  .bebidas-cols { columns: 1; }
 
   /* ---------- pie ---------- */
+  .escalones.pie { margin-top: 0; background-image: var(--piramides-jade); }
   footer {
-    position: relative; background: var(--agua-profunda); color: #cfe9e5;
-    text-align: center; padding: 40px 20px calc(36px + env(safe-area-inset-bottom));
-    overflow: hidden;
+    background: var(--jade); color: #d3e6dd;
+    text-align: center; padding: 26px 20px calc(34px + env(safe-area-inset-bottom));
   }
-  footer h2 { color: #fff; font-size: 26px; font-weight: 700; }
+  footer h2 { color: var(--oro-claro); font-size: 26px; font-weight: 800; }
+  footer .significado { margin: 4px 0 14px; font-size: 13px; color: var(--azul-claro); }
+  footer .significado i { font-family: "Fraunces", Georgia, serif; color: #fff; }
   footer p { margin: 8px 0; font-size: 14px; }
-  footer .acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 18px 0 8px; }
+  footer .acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 16px 0 8px; }
   footer .acciones a {
-    color: var(--agua-profunda); background: var(--turquesa); text-decoration: none;
-    font-weight: 600; padding: 10px 18px; border-radius: 999px; font-size: 14px;
+    color: var(--obsidiana); background: var(--oro); text-decoration: none;
+    font-weight: 700; padding: 10px 18px; border-radius: 10px; font-size: 14px;
   }
-  footer .acciones a.sec { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.35); }
-  footer .letra { font-size: 12px; opacity: .7; margin-top: 20px; }
-  footer .ondas { position: absolute; left: 0; right: 0; top: 0; height: 30px; opacity: .25; }
+  footer .acciones a.sec { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.4); }
+  footer .letra { font-size: 12.5px; color: var(--oro-claro); margin-top: 18px; }
+  footer .numerales { display: flex; justify-content: center; gap: 14px; margin-top: 18px; color: var(--oro); opacity: .7; }
+  footer .numerales svg { width: 26px; height: 26px; }
 
+  @media (min-width: 640px) {
+    .seccion h2 { font-size: 38px; }
+    .titulo h1 { font-size: 46px; }
+  }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
   }
@@ -220,27 +251,28 @@
     <button type="button" data-lang="en" aria-pressed="false">EN</button>
   </div>
 </header>
+<div class="escalones" aria-hidden="true"></div>
 
 <div class="titulo">
   <span class="lugar" id="lugar"></span>
   <h1 id="titulo"></h1>
   <p id="lema"></p>
+  <span class="significado" id="significado"></span>
 </div>
-
-<div class="greca"></div>
 
 <nav class="tabs" aria-label="Secciones del menú"><ul id="tabs"></ul></nav>
 
 <main id="menu"></main>
 
-<div class="greca clara"></div>
-
+<div class="escalones pie" aria-hidden="true"></div>
 <footer id="pie">
   <h2 id="pie-titulo"></h2>
+  <p class="significado" id="pie-significado"></p>
   <p id="pie-horario"></p>
   <div class="acciones" id="pie-acciones"></div>
   <p id="pie-precios"></p>
   <p class="letra" id="pie-letra"></p>
+  <div class="numerales" id="numerales" aria-hidden="true"></div>
 </footer>
 
 <div class="visor" id="visor" role="dialog" aria-modal="true"><img alt=""><p></p><small></small></div>
@@ -251,9 +283,11 @@
   var M = window.MENU;
   var TXT = {
     es: { menu: "Menú", precios: "Precios en pesos mexicanos (MXN). IVA incluido.", agotado: "Agotado hoy", sinFoto: "Foto<br>próximamente", cargando: "Cargando foto…",
-          whatsapp: "WhatsApp", mapa: "Cómo llegar", gracias: "¡Gracias por visitarnos! Disfruta el cenote 🌊" },
+          whatsapp: "WhatsApp", mapa: "Cómo llegar", gracias: "¡Gracias por visitarnos! Disfruta el cenote",
+          significado: "<i>Yok'ts'ono'ot</i> · «sobre el cenote» en lengua maya" },
     en: { menu: "Menu", precios: "Prices in Mexican pesos (MXN). Tax included.", agotado: "Sold out today", sinFoto: "Photo<br>coming soon", cargando: "Loading photo…",
-          whatsapp: "WhatsApp", mapa: "Directions", gracias: "Thanks for visiting! Enjoy the cenote 🌊" }
+          whatsapp: "WhatsApp", mapa: "Directions", gracias: "Thanks for visiting! Enjoy the cenote",
+          significado: "<i>Yok'ts'ono'ot</i> · “above the cenote” in the Maya language" }
   };
 
   var lang = "es";
@@ -269,7 +303,20 @@
     if (text != null) n.textContent = text;
     return n;
   }
-  function $(p) { return "$" + p; }
+  function precio(p) { var n = el("span"); n.innerHTML = "<small>$</small>" + Number(p); return n; }
+
+  // numerales mayas: punto = 1, barra = 5
+  var NUM_MAYA = ["", "Jun", "Ka'", "Óox", "Kan", "Jo'", "Wak", "Uk", "Waxak", "Bolon"];
+  function numeral(n) {
+    var barras = Math.floor(n / 5), puntos = n % 5, h = barras * 7 + (puntos ? 10 : 0), y = (40 - h) / 2, out = "";
+    if (puntos) {
+      var w = puntos * 9 - 1.6, x = (40 - w) / 2;
+      for (var i = 0; i < puntos; i++) out += '<circle cx="' + (x + 3.6 + i * 9) + '" cy="' + (y + 3.6) + '" r="3.6"/>';
+      y += 10;
+    }
+    for (var b = 0; b < barras; b++) out += '<rect x="5" y="' + (y + b * 7) + '" width="30" height="4.5" rx="2.2"/>';
+    return '<svg viewBox="0 0 40 40" fill="currentColor">' + out + "</svg>";
+  }
 
   function render() {
     document.documentElement.lang = lang;
@@ -277,6 +324,7 @@
     document.getElementById("lugar").textContent = R.lugar;
     document.getElementById("titulo").textContent = TXT[lang].menu;
     document.getElementById("lema").textContent = t(R.lema);
+    document.getElementById("significado").innerHTML = TXT[lang].significado;
 
     // pestañas
     var tabs = document.getElementById("tabs");
@@ -290,25 +338,32 @@
     // secciones
     var main = document.getElementById("menu");
     main.innerHTML = "";
-    M.secciones.forEach(function (s) {
+    M.secciones.forEach(function (s, n) {
       var sec = el("section", "seccion"); sec.id = s.id;
       var cab = el("div", "seccion-cab");
-      cab.appendChild(el("span", "gota"));
-      cab.appendChild(el("h2", null, t(s.titulo)));
+      var gl = el("span", "glifo"); gl.innerHTML = numeral(n + 1); gl.setAttribute("aria-hidden", "true");
+      cab.appendChild(gl);
+      var tt = el("div");
+      tt.appendChild(el("span", "kicker", (NUM_MAYA[n + 1] || "") + " · " + (n + 1)));
+      tt.appendChild(el("h2", null, t(s.titulo)));
+      cab.appendChild(tt);
       sec.appendChild(cab);
       if (s.nota) sec.appendChild(el("span", "nota", t(s.nota)));
+      sec.appendChild(el("div", "separador"));
 
       s.grupos.forEach(function (g) {
         var gr = el("div", "grupo");
         if (g.titulo) gr.appendChild(el("h3", null, t(g.titulo)));
+        var caja = gr;
+        if (!s.conFotos) { caja = el("div", "lista"); gr.appendChild(caja); }
         if (g.columnas) {
           var c = el("div", "cols");
           g.columnas.forEach(function (col) { c.appendChild(el("span", null, t(col))); });
-          gr.appendChild(c);
+          caja.appendChild(c);
         }
         g.items.forEach(function (it) {
           var d = el("div", "item" + (it.agotado ? " agotado" : ""));
-          var ICONO = '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="20" cy="22" r="11"/><circle cx="20" cy="22" r="6.5" opacity=".5"/><path d="M5 8v8m-2-8v4a2 2 0 0 0 4 0V8m-2 8v16M35 8c-2 0-3 3-3 7s1 4 3 4v13"/></svg>';
+          var ICONO = '<svg viewBox="0 0 40 24" fill="currentColor"><path d="M2 24V20H7V15H12V10H16V5H18V2H22V5H24V10H28V15H33V20H38V24Z" opacity=".85"/><rect x="18.5" y="15" width="3" height="9" fill="#f8f2e5"/></svg>';
           function marcador() {
             var ph = el("div", "sin-foto");
             ph.innerHTML = ICONO + "<span>" + TXT[lang].sinFoto + "</span>";
@@ -333,15 +388,15 @@
           d.appendChild(el("div", "nombre", t(it.nombre)));
           if (it.precios) {
             var ps = el("div", "precio precios");
-            it.precios.forEach(function (p) { ps.appendChild(el("span", null, $(p))); });
+            it.precios.forEach(function (p) { ps.appendChild(precio(p)); });
             d.appendChild(ps);
           } else {
-            d.appendChild(el("div", "precio", $(it.precio)));
+            var pr = el("div", "precio"); pr.appendChild(precio(it.precio)); d.appendChild(pr);
           }
           if (it.agotado) d.appendChild(el("span", "tag", TXT[lang].agotado));
           else if (it.etiqueta) d.appendChild(el("span", "tag", t(it.etiqueta)));
           if (it.desc) d.appendChild(el("div", "desc", t(it.desc)));
-          gr.appendChild(d);
+          caja.appendChild(d);
         });
         sec.appendChild(gr);
       });
@@ -357,6 +412,8 @@
     if (C.mapa) { var m = el("a", "sec", TXT[lang].mapa); m.href = C.mapa; acc.appendChild(m); }
     document.getElementById("pie-precios").textContent = TXT[lang].precios;
     document.getElementById("pie-letra").textContent = TXT[lang].gracias;
+    document.getElementById("pie-significado").innerHTML = TXT[lang].significado;
+    document.getElementById("numerales").innerHTML = [1, 2, 3, 4].map(numeral).join("");
 
     document.querySelectorAll(".idioma button").forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.dataset.lang === lang));

@@ -2,7 +2,7 @@
 // - Página y precios (index.html, menu-data.js): primero intenta internet (para ver
 //   siempre los precios nuevos); si no hay señal en 4 s, usa la copia guardada.
 // - Fotos y fuentes: usa la copia guardada al instante y la actualiza en segundo plano.
-var CACHE = "menu-yokdzonot-v2";
+var CACHE = "menu-yokdzonot-v3";
 var BASE = ["./", "index.html", "menu-data.js", "fuentes/fraunces-latin.woff2", "fuentes/outfit-latin.woff2"];
 
 self.addEventListener("install", function (e) {
