@@ -6,10 +6,13 @@
 <title>Menú · Cenote Yokdzonot</title>
 <meta name="description" content="Menú del restaurante del Cenote Yokdzonot, Yucatán. Cocina yucateca: poc chuc, panuchos, salbutes, sopa de lima y más.">
 <meta name="theme-color" content="#0b3d4a">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="fuentes/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  /* fuentes guardadas junto al menú (sin depender de Google) */
+  @font-face { font-family: "Fraunces"; font-weight: 100 900; font-display: swap; src: url(fuentes/fraunces-latin.woff2) format("woff2"); }
+  @font-face { font-family: "Outfit"; font-weight: 100 900; font-display: swap; src: url(fuentes/outfit-latin.woff2) format("woff2"); }
+
   :root {
     --agua-profunda: #0b3d4a;
     --agua: #127f8f;
@@ -203,6 +206,9 @@
   .visor.abierto { display: flex; animation: aparecer .2s ease-out; }
   .visor img { max-width: 100%; max-height: 78vh; border-radius: 18px; box-shadow: 0 20px 50px rgba(0,0,0,.4); }
   .visor p { margin: 0; color: #fff; font: 700 22px "Fraunces", Georgia, serif; text-align: center; }
+  .visor img { width: min(100%, 78vh); object-fit: contain; transition: filter .3s; }
+  .visor.cargando img { filter: blur(6px) saturate(1.1); }
+  .visor small { color: var(--turquesa-claro); font-size: 13px; min-height: 1em; }
   @keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
   .item .nombre { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 18px; line-height: 1.25; color: var(--tinta); }
   .item .precio {
@@ -369,16 +375,16 @@
   <p class="letra" id="pie-letra"></p>
 </footer>
 
-<div class="visor" id="visor" role="dialog" aria-modal="true"><img alt=""><p></p></div>
+<div class="visor" id="visor" role="dialog" aria-modal="true"><img alt=""><p></p><small></small></div>
 
 <script src="menu-data.js"></script>
 <script>
 (function () {
   var M = window.MENU;
   var TXT = {
-    es: { menu: "Menú", precios: "Precios en pesos mexicanos (MXN). IVA incluido.", agotado: "Agotado hoy", sinFoto: "Foto<br>próximamente",
+    es: { menu: "Menú", precios: "Precios en pesos mexicanos (MXN). IVA incluido.", agotado: "Agotado hoy", sinFoto: "Foto<br>próximamente", cargando: "Cargando foto…",
           whatsapp: "WhatsApp", mapa: "Cómo llegar", gracias: "¡Gracias por visitarnos! Disfruta el cenote 🌊" },
-    en: { menu: "Menu", precios: "Prices in Mexican pesos (MXN). Tax included.", agotado: "Sold out today", sinFoto: "Photo<br>coming soon",
+    en: { menu: "Menu", precios: "Prices in Mexican pesos (MXN). Tax included.", agotado: "Sold out today", sinFoto: "Photo<br>coming soon", cargando: "Loading photo…",
           whatsapp: "WhatsApp", mapa: "Directions", gracias: "Thanks for visiting! Enjoy the cenote 🌊" }
   };
 
@@ -447,12 +453,16 @@
             d.classList.add("con-foto"); d.appendChild(marcador());
           }
           if (it.foto) {
-            var img = el("img", "foto"); img.src = it.foto; img.alt = t(it.nombre); img.loading = "lazy";
-            img.onerror = function () {
+            // en la lista va la miniatura (~7 KB); la foto grande solo se baja al tocarla
+            var mini = it.foto.replace(/^fotos\//, "fotos/mini/");
+            var img = el("img", "foto"); img.src = mini; img.alt = t(it.nombre); img.loading = "lazy";
+            img.width = 96; img.height = 96; img.decoding = "async";
+            img.onerror = (function (img, d, full) { return function () {
+              if (img.src.indexOf("/mini/") !== -1) { img.src = full; return; }
               if (s.conFotos) img.replaceWith(marcador());
               else { img.remove(); d.classList.remove("con-foto"); }
-            };
-            img.onclick = (function (src, nom) { return function () { abrirVisor(src, nom); }; })(it.foto, t(it.nombre));
+            }; })(img, d, it.foto);
+            img.onclick = (function (img, full, nom) { return function () { abrirVisor(img.src, full, nom); }; })(img, it.foto, t(it.nombre));
             d.classList.add("con-foto"); d.appendChild(img);
           }
           d.appendChild(el("div", "nombre", t(it.nombre)));
@@ -516,11 +526,21 @@
   });
 
   var visor = document.getElementById("visor");
-  function abrirVisor(src, nombre) {
-    visor.querySelector("img").src = src;
-    visor.querySelector("img").alt = nombre;
+  var abierto = 0;
+  function abrirVisor(mini, full, nombre) {
+    var vi = visor.querySelector("img"), aviso = visor.querySelector("small");
+    var turno = ++abierto;
+    vi.src = mini; // se muestra al instante (ya está descargada)
+    vi.alt = nombre;
     visor.querySelector("p").textContent = nombre;
     visor.classList.add("abierto");
+    if (mini === full) { visor.classList.remove("cargando"); aviso.textContent = ""; return; }
+    visor.classList.add("cargando");
+    aviso.textContent = TXT[lang].cargando;
+    var g = new Image();
+    g.onload = function () { if (turno !== abierto) return; vi.src = full; visor.classList.remove("cargando"); aviso.textContent = ""; };
+    g.onerror = function () { if (turno !== abierto) return; visor.classList.remove("cargando"); aviso.textContent = ""; };
+    g.src = full;
   }
   visor.addEventListener("click", function () { visor.classList.remove("abierto"); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") visor.classList.remove("abierto"); });
@@ -538,6 +558,11 @@
   }
 
   render();
+
+  // guarda el menú en el celular para que abra aunque se vaya la señal
+  if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  }
 })();
 </script>
 </body>
