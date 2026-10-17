@@ -7,5 +7,5 @@
    - `fotos/mini/<nombre>.jpg`: 200×200, ~7 KB. Es la que se ve en la lista.
 3. Agrega `foto: "fotos/<nombre>.jpg"` al platillo en `menu-data.js`.
 
-- `cenote.jpg` → si existe, reemplaza la ilustración de la portada automáticamente.
+- `originales/cenote.jpg` es la portada (mural): el script genera `portada.jpg` y `portada-celular.jpg`.
 - Si una foto no existe o falla, se muestra el recuadro "Foto próximamente".
