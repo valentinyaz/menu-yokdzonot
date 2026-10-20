@@ -36,7 +36,15 @@ window.MENU = {
       grupos: [
         {
           items: [
-            { nombre: "Nachos", precio: 130, desc: { es: "Totopos crujientes", en: "Crispy tortilla chips" } },
+            {
+              nombre: "Nachos",
+              precio: 130,
+              foto: "fotos/nachos.jpg",
+              desc: {
+                es: "Totopos con frijol, queso, salsa de tomate y crema",
+                en: "Tortilla chips with bean paste, cheese, tomato sauce and cream",
+              },
+            },
             {
               nombre: { es: "Nachos con pollo", en: "Chicken nachos" },
               foto: "fotos/nachos-con-pollo.jpg",
@@ -54,7 +62,7 @@ window.MENU = {
               },
             },
             { nombre: "Guacamole", precio: 140, foto: "fotos/guacamole.jpg" },
-            { nombre: { es: "Postre del día", en: "Dessert of the day" }, precio: 60 },
+            { nombre: { es: "Postre del día", en: "Dessert of the day" }, precio: 60, foto: "fotos/postre-del-dia.jpg" },
           ],
         },
       ],
@@ -185,6 +193,7 @@ window.MENU = {
             },
             {
               nombre: { es: "Sopa de lima", en: "Lime soup" },
+              foto: "fotos/sopa-de-lima.jpg",
               precio: 100,
               desc: {
                 es: "Caldo tradicional yucateco de pollo con lima y tiras de tortilla",
